@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Ferdous\OtpValidator\Tests\Feature;
 
 use Ferdous\OtpValidator\Services\OtpService;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class OTPTest extends TestCase
@@ -15,10 +16,7 @@ class OTPTest extends TestCase
         $this->otpService = new OtpService();
     }
 
-    /**
-     *
-     * @dataProvider dataProviderForOtpGenerate
-     */
+    #[DataProvider('dataProviderForOtpGenerate')]
     public function testOtpGenerate($digit, $expected): void
     {
         $random = $this->otpService->otpGenerator($digit);
@@ -28,7 +26,7 @@ class OTPTest extends TestCase
     /**
      * @return int[]
      */
-    public function dataProviderForOtpGenerate(): array
+    public static function dataProviderForOtpGenerate(): array
     {
         return [
             [10, 10],
