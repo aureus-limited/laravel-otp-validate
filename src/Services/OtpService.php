@@ -14,7 +14,7 @@ class OtpService
      * @param int $digit
      * @return string
      */
-    public static function otpGenerator(?int $digit = 4)
+    public static function otpGenerator(?int $digit = null)
     {
         $digit = $digit ?? (int) config('otp.digit');
         $gen = '0135792468';
