@@ -14,17 +14,21 @@ class OtpService
      * @param int $digit
      * @return string
      */
-    public static function otpGenerator(int $digit = 4)
+    public static function otpGenerator(?int $digit = 4)
     {
+        $digit = $digit ?? (int) config('otp.digit');
         $gen = '0135792468';
         $res = '';
+
         for ($i = 1; $i <= $digit; $i++)
         {
             $res .= substr($gen, (rand()%(strlen($gen))), 1);
         }
+
         if(isset($res[0]) && $res[0] == '0'){
             $res[0] = substr(trim($gen,'0'), (rand()%(strlen($gen)-1)), 1);
         }
+
         return $res;
     }
 

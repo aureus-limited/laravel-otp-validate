@@ -32,7 +32,8 @@ class OTPTest extends TestCase
             [10, 10],
             [100, 100],
             [0,0],
-            [-1,0]
+            [-1,0],
+            // [null, 4], // The null will trigged a call to config() but this will fail
         ];
     }
 }
